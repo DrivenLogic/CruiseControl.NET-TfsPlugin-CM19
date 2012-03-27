@@ -68,6 +68,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -127,10 +128,6 @@
     <Reference Include="Growl.CoreLibrary, Version=2.0.0.0, Culture=neutral, PublicKeyToken=13e59d82e007b064, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Growl.CoreLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.ActiveHomeScriptLib">
-      <HintPath>..\..\lib\Interop.ActiveHomeScriptLib.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -733,6 +730,17 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ActiveHomeScriptLib">
+      <Guid>{001000AF-1DEF-0010-10B6-DC5BA692C858}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

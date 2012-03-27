@@ -121,7 +121,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)*.*  $(SolutionDir)\CCTray\bin\$(ConfigurationName)\extensions\</PostBuildEvent>
+    <PostBuildEvent>
+mkdir $(SolutionDir)\CCTray\bin\$(ConfigurationName)\extensions\
+del $(SolutionDir)\CCTray\bin\$(ConfigurationName)\extensions\*.*
+copy $(TargetDir)*.*  $(SolutionDir)\CCTray\bin\$(ConfigurationName)\extensions\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

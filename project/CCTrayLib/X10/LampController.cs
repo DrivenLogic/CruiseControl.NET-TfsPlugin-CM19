@@ -13,13 +13,17 @@ namespace ThoughtWorks.CruiseControl.CCTrayLib.X10
 		public LampController(X10Configuration configuration, IX10LowLevelDriver lowLevelDriver)
 		{
 			if (configuration != null){
-	            int successUnitCode = configuration.SuccessUnitCode;
+	            
+                int successUnitCode = configuration.SuccessUnitCode;
                 int buildingUnitCode = configuration.BuildingUnitCode;
 	           	int failureUnitCode = configuration.FailureUnitCode;
+
 	            LowLevelDriverFactory factory = new LowLevelDriverFactory(configuration);
-	            if (lowLevelDriver == null){
+	            
+                if (lowLevelDriver == null){
 	            	lowLevelDriver = factory.getDriver();
 				}
+
 				red = new Lamp("red", failureUnitCode, lowLevelDriver);
                 yellow = new Lamp("yellow", buildingUnitCode, lowLevelDriver);
 				green = new Lamp("green", successUnitCode, lowLevelDriver);
