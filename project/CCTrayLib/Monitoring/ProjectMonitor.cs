@@ -410,8 +410,12 @@ namespace ThoughtWorks.CruiseControl.CCTrayLib.Monitoring
 					PollIntervalReporter duringInterval = new PollIntervalReporter(lastProjectStatus, newProjectStatus);
 					
 					if (duringInterval.IsAnotherBuildComplete && duringInterval.WasLatestBuildSuccessful) buildDurationTracker.OnSuccessfulBuild();
-					if (duringInterval.IsAnotherBuildComplete) OnBuildOccurred(new MonitorBuildOccurredEventArgs(this, duringInterval.BuildTransition));
-
+					
+                    if (duringInterval.IsAnotherBuildComplete)
+					{
+                        OnBuildOccurred(new MonitorBuildOccurredEventArgs(this, duringInterval.BuildTransition));
+					}
+				   
 					if (duringInterval.HasNewBuildStarted) buildDurationTracker.OnBuildStart();
 
 					if (duringInterval.WasNewStatusMessagesReceived) OnMessageReceived(newProjectStatus.Name, duringInterval.AllStatusMessages);

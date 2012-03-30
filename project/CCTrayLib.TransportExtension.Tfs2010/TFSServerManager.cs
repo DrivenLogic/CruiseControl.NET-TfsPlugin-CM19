@@ -51,7 +51,7 @@ namespace CCTray.TransportExtension.Tfs2010
 {
     public class TFSServerManager : ICruiseServerManager
     {
-        private const int MAX_BUILDS_TO_QUERY = 10;
+        private const int MAX_BUILDS_TO_QUERY = 20; // why?
 
         private readonly BuildServer _buildServer;
         private TfsConnection _tfsConnection;
@@ -159,6 +159,7 @@ namespace CCTray.TransportExtension.Tfs2010
             }
             set { lock (_tfsServerLock) { _tfsConnection = value; } }
         }
+
         private void EnsureTfsConnection()
         {
             if (_tfsConnection == null)
@@ -174,14 +175,7 @@ namespace CCTray.TransportExtension.Tfs2010
 
                             TfsConfigurationServer configurationServer = TfsConfigurationServerFactory.GetConfigurationServer(serverUri);
                             _tfsConnection = configurationServer;
-
-                            //_teamProjectCollection = new TfsTeamProjectCollection(configurationServer);
-
                             _teamProjectCollection = new TfsTeamProjectCollection(new Uri(Settings.ServerUrl));
-
-                            //_teamProjectCollection = configurationServer.GetTeamProjectCollection(configurationServer.InstanceId);
-                            
-
                         }
                         if (_tfsConnection == null)
                         {
@@ -246,8 +240,7 @@ namespace CCTray.TransportExtension.Tfs2010
 
         internal IBuildController[] GetBuildControllers()
         {
-            // QueryBuildControllers without a spec has issues connecting to TFS server 2008 - http://social.msdn.microsoft.com/Forums/en-US/tfsbuild/thread/a8988205-bdbc-491c-8df8-5d69f323f2b4/
-            if (TfsBuildServer.BuildServerVersion == BuildServerVersion.V2)
+            if (TfsBuildServer.BuildServerVersion == BuildServerVersion.V3)
             {
                 IBuildControllerSpec bcSpec = TfsBuildServer.CreateBuildControllerSpec();
                 bcSpec.Name = String.Format(@"{0}\*", Settings.TeamProject);
@@ -364,7 +357,7 @@ namespace CCTray.TransportExtension.Tfs2010
                 buildDetail.BuildDefinition.Name,
                 GetProjectCategory(buildDetail.BuildDefinition.Name),
                 GetProjectActivity(buildDetail.Status),
-                GetIntegrationStatus(buildDetail.Status),
+                GetIntegrationStatus(buildDetail.Status), // maps TFS build state to Cruise build state.
                 GetProjectIntegratorState(buildDetail.Status),
                 GetBuildStatusUrl(buildDetail),
                 GetBuildTime(buildDetail),
@@ -402,11 +395,23 @@ namespace CCTray.TransportExtension.Tfs2010
 
         private static IntegrationStatus GetIntegrationStatus(BuildStatus buildStatus)
         {
+            
+            //TFS States
+            
+            //All
+            //Failed
+            //InProgress
+            //None
+            //NotStarted
+            //PartiallySucceeded
+            //Stopped 
+            //Succeeded
+
             switch (buildStatus)
             {
                 case BuildStatus.Failed: return IntegrationStatus.Failure;
-                case BuildStatus.InProgress: return IntegrationStatus.Unknown;
-                case BuildStatus.NotStarted: return IntegrationStatus.Unknown;
+                case BuildStatus.InProgress: return IntegrationStatus.Success;
+                case BuildStatus.NotStarted: return IntegrationStatus.Success;
                 case BuildStatus.PartiallySucceeded: return IntegrationStatus.Exception;
                 case BuildStatus.Stopped: return IntegrationStatus.Unknown;
                 case BuildStatus.Succeeded: return IntegrationStatus.Success;

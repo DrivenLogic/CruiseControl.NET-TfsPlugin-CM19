@@ -46,7 +46,7 @@ namespace CCTray.TransportExtension.Tfs2010
     internal class TFSCacheManager
     {
         private const int CACHE_PROJECT_LIST_TIMEOUT_SECONDS = 15 * 60;
-        private const int CACHE_PROJECT_STATUS_TIMEOUT_SECONDS = 2 * 60;
+        private const int CACHE_PROJECT_STATUS_TIMEOUT_SECONDS = 1 * 60;
         private const int CHECK_QUEUED_BUILDS_TIMEOUT_SECONDS = 2 * 60;
 
         private TFSServerManager _manager;
