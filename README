@@ -1,10 +1,11 @@
 
 A fork of CruiseControl.NET that adds the following features:
 
-* A Transport extension for TFS 2010
+* A CCTray Transport extension for TFS 2010
 * Support for the X10 CM19 USB firecracker 
 
 The end result being that you can use one tool (cc tray) to monitor both Cruise and TFS builds.
 CM19 support will allow the lava to flow for those of us with the newer USB Firecracker.  
 
-Credit: The original work for the TFS extension was the 2008 version by Ben Gavin: http://blog.virtual-olympus.com
+Credits: 
+The original work for the TFS extension was the 2008 version by Ben Gavin: http://blog.virtual-olympus.com
