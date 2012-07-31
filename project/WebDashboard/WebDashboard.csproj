@@ -54,7 +54,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Build\WebDashboard\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -83,7 +83,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>..\..\Build\WebDashboard\ThoughtWorks.CruiseControl.WebDashboard.XML</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -846,14 +846,18 @@
     <Content Include="Themes\Obsess\cruisecontrol.css" />
     <Content Include="Themes\Obsess\Manifest.xml" />
     <Content Include="xsl\ndependreport-ccnet.v2.xsl" />
-    <None Include="dashboard.config" />
+    <None Include="dashboard.config">
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="Resources\Languages.fr.resx">
       <LastGenOutput>Languages.fr.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="templates\ActionException.vm" />
     <None Include="templates\AddProject.vm" />
-    <None Include="templates\AdministerDashboard.vm" />
+    <None Include="templates\AdministerDashboard.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\AdminLogin.vm" />
     <None Include="templates\AllBuilds.vm" />
     <None Include="templates\AuditHistory.vm" />
@@ -874,18 +878,28 @@
     <None Include="templates\LoggedOut.vm" />
     <None Include="templates\LoginAction.vm" />
     <None Include="templates\OhlohStats.vm" />
-    <None Include="templates\PackageList.vm" />
+    <None Include="templates\PackageList.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\ProjectGrid.vm" />
-    <None Include="templates\ProjectParameters.vm" />
+    <None Include="templates\ProjectParameters.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\ProjectReport.vm" />
-    <None Include="templates\ProjectServerConfiguration.vm" />
+    <None Include="templates\ProjectServerConfiguration.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\ProjectSideBar.vm" />
     <None Include="templates\ProjectStatusReport.vm" />
     <None Include="templates\ProjectTimeline.vm" />
     <None Include="templates\RecentBuilds.vm" />
-    <None Include="templates\SecurityConfiguration.vm" />
+    <None Include="templates\SecurityConfiguration.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\ServerInfo.vm" />
-    <None Include="templates\ServerLog.vm" />
+    <None Include="templates\ServerLog.vm">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\ServerQueueStatus.vm" />
     <None Include="templates\ServerSideBar.vm" />
     <None Include="templates\SiteTemplate.vm" />

@@ -72,7 +72,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Build\UnitTests\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -408,6 +408,7 @@
     <Compile Include="Core\Tasks\FakeTaskTest.cs" />
     <Compile Include="Core\Tasks\MockTask.cs" />
     <Compile Include="Core\Tasks\XmlTaskResultTests.cs" />
+    <Compile Include="Core\Tasks\XslTransformationTaskTest.cs" />
     <Compile Include="Core\Triggers\CronTriggerTest.cs" />
     <Compile Include="Core\Triggers\ParameterTriggerTests.cs" />
     <Compile Include="Core\Triggers\RollUpTriggerTest.cs" />
@@ -429,6 +430,7 @@
     <Compile Include="IntegrationTests\TriggerTests.cs" />
     <Compile Include="Remote\CommunicationsEventArgsTests.cs" />
     <Compile Include="Remote\CruiseServerClientBaseTests.cs" />
+    <Compile Include="Remote\DefaultWebClientTests.cs" />
     <Compile Include="Remote\EncryptingConnectionTests.cs" />
     <Compile Include="Remote\HttpConnectionTests.cs" />
     <Compile Include="Remote\ItemStatusTests.cs" />
@@ -1396,6 +1398,12 @@
     <Content Include="resources\IntegrationScenarios\test3.xml" />
     <Content Include="resources\IntegrationScenarios\test4.xml" />
     <Content Include="resources\IntegrationScenarios\test5.xml" />
+    <Content Include="resources\IntegrationScenarios\TestIfRelativeFolder.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\IntegrationScenarios\TestIfRelativeFolderIncluded.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\IntegrationScenarios\Triggers.xml" />
     <Content Include="resources\statistics.xml" />
     <Content Include="resources\UnitTestResults.xml" />

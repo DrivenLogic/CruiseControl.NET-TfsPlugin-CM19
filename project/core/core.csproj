@@ -68,7 +68,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Build\Core\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -918,6 +918,7 @@
     <Compile Include="tasks\NDependTask.cs" />
     <Compile Include="tasks\UpdateConfigurationTask.cs" />
     <Compile Include="tasks\XmlTaskResult.cs" />
+    <Compile Include="tasks\XslTransformationTask.cs" />
     <Compile Include="Triggers\CronTrigger.cs" />
     <Compile Include="Triggers\NCrontab\CrontabException.cs" />
     <Compile Include="Triggers\NCrontab\CrontabField.cs" />

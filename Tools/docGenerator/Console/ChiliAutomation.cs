@@ -115,10 +115,18 @@ namespace Console
             foreach (var ef in existingFiles)
             {
                 var barefilename = new System.IO.FileInfo(ef).Name;
-                if (!FileName2ChiliPageNameMapping.ContainsKey(barefilename))
+                bool wikiPageMapped = false;
+
+                foreach (string x in FileName2ChiliPageNameMapping.Keys)
+                {
+                    if ( string.Equals(x,barefilename, StringComparison.CurrentCultureIgnoreCase))
+                        wikiPageMapped = true;
+                }
+
+                if (!wikiPageMapped)
                 {
                     missingFiles++;
-                    WriteToOutput(string.Format("{0}", barefilename), OutputType.Warning);
+                    WriteToOutput(string.Format("    {0}", barefilename), OutputType.Warning);
                 }
             }
 
@@ -299,6 +307,7 @@ namespace Console
             FileName2ChiliPageNameMapping.Add("xmlFileAuditReader.wiki", "XML_File_Audit_Reader");
             //    FileName2ChiliPageNameMapping.Add("xmlFolderData.wiki", "");
             FileName2ChiliPageNameMapping.Add("xmllogger.wiki", "Xml_Log_Publisher");
+            FileName2ChiliPageNameMapping.Add("xslt.wiki", "XsltTask");
 
 
             FileName2ChiliPageNameMapping.Add("booleanParameter.wiki", "BooleanParameter");
@@ -318,7 +327,7 @@ namespace Console
             FileName2ChiliPageNameMapping.Add("cookieStore.wiki", "");
             FileName2ChiliPageNameMapping.Add("farmReportFarmPlugin.wiki", "Farm_Report_Farm_Plugin");
             FileName2ChiliPageNameMapping.Add("finalBuildStatusPlugin.wiki", "Final_Build_Status_Display_Plugin");
-            FileName2ChiliPageNameMapping.Add("htmlReportPlugin.wiki", "");
+            FileName2ChiliPageNameMapping.Add("htmlReportPlugin.wiki", "htmlReportPlugin");
             FileName2ChiliPageNameMapping.Add("latestBuildReportProjectPlugin.wiki", "latestBuildReportProjectPlugin.wiki");
             FileName2ChiliPageNameMapping.Add("multipleXslReportAction.wiki", "Multiple_XSL_Report_Build_Plugin");
             FileName2ChiliPageNameMapping.Add("namedAction.wiki", "");
